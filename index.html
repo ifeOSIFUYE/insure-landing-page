@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Insure landing page</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    /* .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); } */
+
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Karla:wght@400;700&display=swap');
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --width: 80%;
+      --dark-violet-bg: hsl(256, 26%, 20%);
+      --white: rgb(255, 255, 255);
+      --font-family-headings: 'DM Serif Display', serif;
+      --font-family-body: 'Karla', sans-serif;
+    }
+
+    body {
+      font-family: var(--font-family-body);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-family-headings);
+      font-weight: 400;
+      line-height: 1em;
+    }
+
+    header h2 {
+      margin: 0.5em;
+    }
+
+    .call-to-action h2 {
+      margin: 0 0 1em;
+    }
+
+    h2 {
+      font-size: 2em;
+    }
+
+    button {
+      background: transparent;
+      border: 2px solid var(--white);
+      color: var(--white);
+      padding: 1em 2em;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: var(--white);
+      color: var(--dark-violet-bg);
+    }
+
+    .wrapper {
+      /* width: 375px; */
+      margin: 0 auto;
+      border: 1px solid pink;
+      background: url('images/bg-pattern-intro-left-mobile.svg') no-repeat, url('images/bg-pattern-intro-right-mobile.svg') no-repeat;
+      background-position: 0 33em, right 51em;
+    }
+
+    header {
+      position: relative;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      padding: 1.5em;
+    }
+
+    figure {
+      cursor: pointer;
+    }
+
+    nav figure .open {
+      display: block;
+      pointer-events: none;
+    }
+
+    nav figure .close {
+      display: none;
+      pointer-events: none;
+    }
+
+    nav figure.nav-toggle .open {
+      display: none;
+    }
+
+    nav figure.nav-toggle .close {
+      display: block;
+    }
+
+    nav ul {
+      display: block;
+      width: 100%;
+      height: 0;
+      overflow: hidden;
+      flex-direction: column;
+      background: var(--dark-violet-bg) url('images/bg-pattern-mobile-nav.svg') no-repeat;
+      background-position: right 20em;
+      position: absolute;
+      top: 5em;
+      left: 0;
+      transition: 250ms height ease-in-out ;
+    }
+
+    nav ul.red {
+      height: 75vh;
+    }
+
+    nav ul li {
+      margin: 0.5em auto;
+      width: 90%;
+      list-style: none;
+      text-align: center;
+      padding: 1em;
+      position: relative;
+      cursor: pointer;
+    }
+
+    nav ul li:nth-child(1) {
+      margin-top: 2em;
+    }
+
+    nav ul li::before {
+      content: '';
+      position: absolute;
+      border: 2px solid var(--white);
+      display: none;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    nav ul li:hover::before {
+      display: block;
+    }
+
+    nav ul li a {
+      color: var(--white);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .header-wrapper {
+
+    }
+
+    .header-wrapper img {
+      width: 100%;
+    }
+
+    .header__intro {
+      width: 85%;
+      margin: 5em auto;
+      text-align: center;
+      color: var(--white);
+    }
+
+    .header__intro-button {
+      margin: 3em 0 7em;
+    }
+
+    .header__background {
+      position: absolute;
+      z-index: -2;
+      background: var(--dark-violet-bg);
+      top: 5em;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    main, footer {
+      padding: 0 2em 4em;
+    }
+
+    .different {
+      position: relative;
+      padding: 1em 0;
+      text-align: center;
+    }
+
+    .different::before {
+      content: '';
+      position: absolute;
+      border-top: 1px solid var(--dark-violet-bg);
+      width: 150px;
+      top: 0;
+      left: calc(50% - (150px / 2));
+    }
+
+    .section__grid {
+      margin: 3em 0;
+      display: grid;
+      gap: 3em;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .card h3{
+      margin: 1.5em 0;
+    }
+
+    .card p{
+      line-height: 1.3em;
+    }
+
+    .call-to-action {
+      background: var(--dark-violet-bg) url('images/bg-pattern-how-we-work-mobile.svg') no-repeat;
+      background-position: right;
+      color: var(--white);
+      text-align: center;
+      padding: 4em 3em;
+    }
+
+    footer {
+      background: pink;
+      padding: 5em 3em;
+      text-align: center;
+    }
+
+    .footer__head {
+      border-bottom: 1px solid gray;
+      padding-bottom: 2em;
+    }
+
+    .social {
+      margin-top: 1em;
+    }
+
+    .social a {
+      margin: 0.3em;
+    }
+
+    .footer__foot {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .footer__card {
+      margin-top: 2em;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer__card h6 {
+      font-family: var(--font-family-body);
+      margin-bottom: 1.5em;
+    }
+
+    .footer__card a, h6 {
+      margin: 0.3em;
+      font-size: 12px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: gray;
+    }
+    
+
+    @media screen and (min-width: 1000px) {
+      
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="wrapper">
+
+    <header>
+      <nav>
+        <a href="#"><img src="images/logo.svg" alt="logo" class="logo"></a>
+
+        <figure class="" id="hamburger">
+          <img src="images/icon-hamburger.svg" alt="hamburger-icon" class="open">
+          <img src="images/icon-close.svg" alt="close-icon" class="close">
+        </figure>
+        
+        <ul class="" id="nav-ul">
+          <li><a href="#">how we work</a></li>
+          <li><a href="#">blog</a></li>
+          <li><a href="#">account</a></li>
+          <li><a href="#">view plans</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__background"></div>
+
+      <div class="header-wrapper">
+        <img src="images/image-intro-mobile.jpg" srcset="images/image-intro-mobile.jpg 375w, images/image-intro-desktop.jpg 540w" alt="">
+        <section class="header__intro">
+          <h2>Humanizing <br> your insurance.</h2>
+          <p>
+            Get your life insurance coverage easier and faster. We blend our expertise 
+            and technology to help you find the
+            plan that's right for you. Ensure you and your loved ones are protected.
+          </p>
+          <button type="button" class="header__intro-button">view plans</button>
+        </section>
+      </div>
+      
+    </header>
+
+    <main>
+      <section class="different">
+        <h2>We're different</h2>
+        <div class="section__grid">
+          <div class="card">
+            <img src="images/icon-snappy-process.svg" alt="snappy">
+            <h3>Snappy Process</h3>
+            <p>
+              Our application process can be completed in minutes, not hours. 
+              Don't get stuck filling in tedious forms.
+            </p>
+          </div>
+          <div class="card">
+            <img src="images/icon-affordable-prices.svg" alt="affordable-prices">
+            <h3>Affordable Prices</h3>
+            <p>
+              We don't want you worrying about high monthly costs. 
+              Our prices may be low, but we still offer the best coverage possible.
+            </p>
+          </div>
+          <div class="card">
+            <img src="images/icon-people-first.svg" alt="people-first">
+            <h3>People First</h3>
+            <p>
+              Our plans aren't full of conditions and clauses to prevent payouts. 
+              We make sure you're covered when you need it.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="call-to-action">
+        <h2>Find out more about how we work</h2>
+        <button type="button">how we work</button>
+      </section>
+
+    </main>
+
+    <footer>
+      <div class="footer__head">
+        <img src="images/logo.svg" alt="logo" class="logo">
+        <div class="social">
+          <a href="#"><img src="images/icon-facebook.svg" alt="facebook-icon"></a>
+          <a href="#"><img src="images/icon-twitter.svg" alt="twitter-icon"></a>
+          <a href="#"><img src="images/icon-pinterest.svg" alt="pinterest-icon"></a>
+          <a href="#"><img src="images/icon-instagram.svg" alt="instagram-icon"></a>
+        </div>
+      </div>
+      <div class="footer__foot">
+        <div class="footer__card">
+          <h6>our company</h6>
+          <a href="#">how we work</a>
+          <a href="#">why insure?</a>
+          <a href="#">view plans</a>
+          <a href="#">reviews</a>
+        </div>
+        <div class="footer__card">
+          <h6>help me</h6>
+          <a href="#">faq</a>
+          <a href="#">terms of use</a>
+          <a href="#">privacy policy</a>
+          <a href="#">cookies</a>
+        </div>
+        <div class="footer__card">
+          <h6>contact</h6>
+          <a href="#">sales</a>
+          <a href="#">support</a>
+          <a href="#">live chat</a>
+        </div>
+        <div class="footer__card">
+          <h6>others</h6>
+          <a href="#">careers</a>
+          <a href="#">press</a>
+          <a href="#">licenses</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script type="text/javascript">
+  
+    hamburger = document.getElementById('hamburger');
+    navBar = document.getElementById('nav-ul');
+
+    hamburger.addEventListener('click', (e) => {
+      hamburger.classList.toggle('nav-toggle');
+      navBar.classList.toggle('red');
+    });
+  
+  </script>
+
+  <!-- <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">Your Name Here</a>.
+  </div> -->
+</body>
+
+</html>
